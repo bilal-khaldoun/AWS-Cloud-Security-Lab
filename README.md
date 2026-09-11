@@ -44,5 +44,26 @@ Using AWS CloudWatch Logs Insights, queried the raw CloudTrail logs to investiga
 #### Query Executed:
 ```sql
 fields @timestamp, eventName, sourceIPAddress, userIdentity.userName
+Key Forensic Findings:
+Targeted Account: test
+
+Adversary Source IP: 86.108.37.194
+
+Event Outcome: Failed authentication
+
+Evidence: Logs Insights Analysis Result
+AWS Services Used
+AWS CloudTrail: API logging and activity auditing.
+
+Amazon CloudWatch & Logs Insights: Log aggregation, custom metric filtration, alarm triggers, and interactive log queries.
+
+Amazon EventBridge: Event-driven architecture for real-time security events.
+
+Amazon SNS (Simple Notification Service): Automated email notification dispatch.
+
+AWS IAM: Access control and role permissions (MyCloudTrailRole).
+
+
+
 | filter eventName = 'ConsoleLogin' and errorMessage = 'Failed authentication'
 | sort @timestamp desc
